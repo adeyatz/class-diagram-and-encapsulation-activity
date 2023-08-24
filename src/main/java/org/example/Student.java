@@ -14,17 +14,21 @@ public class Student {
     private static final int GROUP_HIGH = 5;
 
     public Student(String name, char grade, int group ) throws InvalidObjectException {
-        this.name = name;
-        if (this.name.length() == 0)
-            throw new InvalidObjectException("name cannot be an empty String");
 
-        this.grade = Character.toUpperCase(grade);
-        if ((this.grade < HIGHEST_GRADE) || (this.grade > LOWEST_GRADE))
+        char upperCaseGrade = Character.toUpperCase(grade);
+
+        if ((name == null) || (name.length() == 0))
+            throw new InvalidObjectException("name cannot be an empty or null String");
+
+        if ((upperCaseGrade < HIGHEST_GRADE) || (upperCaseGrade > LOWEST_GRADE))
             throw new InvalidObjectException( "grade must be between 'A' and 'F'");
 
-        this.group = group;
-        if ((this.group < GROUP_LOW) || (this.group > GROUP_HIGH))
+        if ((group < GROUP_LOW) || (group > GROUP_HIGH))
             throw new InvalidObjectException( "group must be between 1 and 6");
+
+        this.group = group;
+        this.name = name;
+        this.grade = upperCaseGrade;
     }
 
 

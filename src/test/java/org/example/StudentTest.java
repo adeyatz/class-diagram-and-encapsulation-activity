@@ -54,6 +54,18 @@ class StudentTest {
         }
     }
 
+    @Test
+    void checkConstructorNullString() {
+
+        Student student = null;
+        try {
+            student = new Student(null, 'A', 1);
+            fail("Test should cause InvalidObjectException");
+
+        } catch (InvalidObjectException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     @Test
     void checkConstructorInvalidGrade() {
